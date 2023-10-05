@@ -6,11 +6,11 @@ class Account {
     }
     public synchronized void deposit(double amount) {
         balance += amount;
-        notify(); // Уведомить ожидающий поток о пополнении
+        notify();
     }
     public synchronized void withdraw(double amount) throws InterruptedException {
         while (balance < amount) {
-            wait(); // Ожидать пополнения счета, если баланс меньше требуемой суммы
+            wait();
         }
         balance -= amount;
     }
